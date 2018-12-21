@@ -1,0 +1,21 @@
+first go to your DIR
+
+############# Configure Your Local Repo  #################
+
+#cd /git
+#git init --> creates local repo here
+#git add <*|myfile> -->  add thos file to git to be committed later to loca repo
+#git commit -a -m "first commit here" --> commit those file to local repo
+*** -a here instead of add each fule via git add file1 and so on ***
+
+
+############ Configure you git command to push|pull from the central Repo "GitHub" for example ##########
+####
+###########  You can use https:// or ssh  ###########
+######### for  ssh got to website put you public key there "https://github.com --> setting --> ssh keys --> add ssh >>> paste your piblic key "
+
+######## Ensure by x@M.S.R#ssh git@github.com
+
+#git remote add < myremote | any name > git@github.com:mohamedsaber101/<Your repo there | helpful_scripts.git>
+#git remote -v --> show your configured remote repos
+#git push -u my < master| Branch Name there"Dir name" Master means / >
