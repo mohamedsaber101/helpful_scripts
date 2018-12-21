@@ -1,0 +1,25 @@
+#Usage: ./find_module <MODULE_NAME>
+module=$1
+echo "import os, $module" > /tmp/module
+echo "path=os.path.abspath(${module}.__file__)" >> /tmp/module
+echo "print (path)" >> /tmp/module
+
+
+######################
+echo "fr = open(path, 'r')" >> /tmp/module
+echo 'content = fr.read()' >> /tmp/module
+echo 'fr.close' >> /tmp/module
+
+echo "fw = open('${module}.txt', 'w')" >> /tmp/module
+echo "fw.write(content)"  >> /tmp/module
+echo "fw.close" >> /tmp/module
+echo 
+echo
+echo '###################################################'
+
+echo
+ cat /tmp/module
+
+
+echo
+echo '####################################################'

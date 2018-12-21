@@ -1,0 +1,13 @@
+if [ -d /l/download/vedio/$2 ]
+then
+echo Directory exists
+exit
+else
+mkdir /l/download/vedio/$2
+cd /l/download/vedio/$2
+python -3 -m youtube_dl -f 'bestvideo[height<=480]+bestaudio/best[height<=480]' $1
+
+#mv /l/download/vedio/$2/* /l/download/vedio/$2/$2.mp4
+
+#/bin/subtitles $1 $2
+fi

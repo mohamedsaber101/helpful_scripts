@@ -1,0 +1,13 @@
+
+#USAGE:   script   <playlist url> <dirname to be put at /l/download/vedio
+curl -k $1 |grep 'watch?v' --color=auto|awk -F 'v=' '{print $2}'|awk -F '&amp' '{print $1}'|uniq > /tmp/subtitles
+
+n=0
+for i in `cat /tmp/subtitles`
+
+do
+n=$[$n+1]
+/bin/youtube https://www.youtube.com/watch?v=$i ${2}_$n
+echo $n
+done
+

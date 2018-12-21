@@ -1,0 +1,31 @@
+#usgae ./script <YouTube url> <file name to be saved relative to /l/download/video> <dir inside vedio>
+if [ $1 ] & [ $2 ]
+then
+url=$1
+#extract just video address inside youtube
+link=`echo $url|cut -d"=" -f2`
+
+#reuesting subdown link for youtube video
+curl -k https://downsub.com/?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D$link > /tmp/page
+
+#get the endpoint for download button
+grep '>>>Download<<<' /tmp/page  >/tmp/page_url
+
+#parsing for index.php.......
+actual=$(cat /tmp/page_url|awk -F '>>>' '{print $1}' |awk -F 'href="./' '{print $2}' |sed 's/"//g')
+#using ansible to download the file from the web server
+ansible localhost -m get_url -a "url=https://downsub.com/$actual dest=/tmp/page_subt"
+
+
+cat /tmp/page_subt |sed 's/<font color="#CCCCCC">//g' |sed 's/<\/font>//g'|sed 's/<font color="#E5E5E5">//g' > /l/download/vedio/${2}.srt
+
+cat /l/download/vedio/${2}.srt |grep -v '[[:digit:]]'   > /l/download/vedio/${2}.txt
+rm -rf /tmp/page*
+cd /l/download/vedio/
+soffice --convert-to pdf ${2}.txt  --headless
+mkdir $2 2>/dev/null
+mv ${2}.srt ${2}.txt ${2}.pdf $2
+echo 
+echo
+echo Files are at /l/download/vedio/$2
+fi
