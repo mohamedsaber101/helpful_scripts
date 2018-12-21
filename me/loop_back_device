@@ -1,0 +1,17 @@
+#first create dummy file
+dd if=/dev/zero of=loopbackfile.img bs=100M count=10  ## < 1G 
+
+
+# assign it to next available loop back device loop1, loop2,loop3, And So on
+
+losetup -fP loopbackfile2.img
+
+
+## see each loop back device resides on which file
+losetup -a 
+
+
+## create pv or vg 
+pvcreate /dev/loop6
+
+vgcreate /dev/loop6

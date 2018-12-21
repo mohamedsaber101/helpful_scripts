@@ -1,0 +1,3 @@
+while true; do (( i++ )); echo test \$i; sleep 5; done
+# IT will echo test1  test2 and so ON
+

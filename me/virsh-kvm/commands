@@ -1,0 +1,18 @@
+
+
+#to create thin qcow2 disk supports snapshots
+qemu-img create -t qcow2 mydisk.qcow2 200G
+
+
+
+virsh list [--all]
+
+virsh snapshot-create-as --domain {VM-NAME} --name "{SNAPSHOT-NAME}"
+
+virsh snapshot-list --domain {DOMAIN}
+
+visrh dumpxml {DOMAIN}  #--> get xml definition file for a domain
+
+virsh define {XML_FILE}
+
+

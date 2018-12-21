@@ -1,0 +1,5 @@
+#in firewalld host
+ssh -f -N -T -R2222:localhost:22 stack@41.33.82.248 -p 2020
+#then in publoc 
+ssh -p 2222 root@localhost
+

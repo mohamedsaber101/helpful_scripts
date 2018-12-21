@@ -1,0 +1,4 @@
+in task scheduler make the trigger to be 
+
+
+powershell -file "c:/../../..myscript.ps1"

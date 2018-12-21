@@ -1,0 +1,27 @@
+function piResponse() {
+piSetCookie('visitor_id6342', '834429140', 3650);
+piSetCookie('visitor_id6342-hash', 'f4bd282aba65fe5dce4653d42143f4b2e31cc3dc1888a8b9987195740640bf95ca52f4b93cb31626d27a33b97d3903fa6d6acfc8', 3650);
+
+if (document.location.protocol != "https:" || (document.location.protocol == "https:" && true)) {
+var analytics_link = document.location.protocol + "//" + "www2.thelinuxfoundation.org/analytics?";
+pi.tracker.visitor_id='834429140';
+
+pi.tracker.visitor_id_sign='f4bd282aba65fe5dce4653d42143f4b2e31cc3dc1888a8b9987195740640bf95ca52f4b93cb31626d27a33b97d3903fa6d6acfc8';
+
+var variables = 'conly=true';
+for (property in pi.tracker) {
+	variables += "&"+property+"="+pi.tracker[property];
+}
+var headID = document.getElementsByTagName("head")[0];
+piScriptObj[piScriptNum] = document.createElement('script');
+piScriptObj[piScriptNum].type = 'text/javascript';
+piScriptObj[piScriptNum].src = analytics_link + variables;
+headID.appendChild(piScriptObj[piScriptNum]);
+piScriptObj[piScriptNum].onload = function() { return; }
+}
+}
+piResponse();
+
+
+
+

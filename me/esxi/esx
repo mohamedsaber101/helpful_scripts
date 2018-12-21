@@ -1,0 +1,30 @@
+ESXi 4.x, 5.x and 6.0
+To power on a virtual machine from the command line:
+
+    List the inventory ID of the virtual machine with the command:
+
+    vim-cmd vmsvc/getallvms |grep <vm name>
+
+    Note: The first column of the output shows the vmid.
+
+    Check the power state of the virtual machine with the command:
+
+    vim-cmd vmsvc/power.getstate <vmid>
+
+    Power-on the virtual machine with the command:
+
+    vim-cmd vmsvc/power.on <vmid> 
+
+
+#######################################################
+
+
+esxcli network ip interface ipv4 set --interface-name=vmk0 --ipv4=41.33.82.245 --netmask=255.255.255.240 --type=static
+
+
+esxcli network ip route ipv4 add --gateway 41.33.82.241 --network default
+
+
+
+
+newpassword: P@ssw0rdrootadmin

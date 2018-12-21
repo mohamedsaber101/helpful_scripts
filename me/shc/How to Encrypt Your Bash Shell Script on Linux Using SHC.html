@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/css.css" media="screen, projection">
+<title>How to Encrypt Your Bash Shell Script on Linux Using SHC</title>
+<meta name="description" content="Q: How do I encrypt my bash shell script on Linux environment? The shell script contains password, and I don’t want others who have execute access to view">
+<meta name="robots" content="noodp, noydir">
+<link rel="canonical" href="https://www.thegeekstuff.com/2012/05/encrypt-bash-shell-script/">
+<link rel="alternate" type="application/rss+xml" title="The Geek Stuff feed" href="https://www.thegeekstuff.com/feed/">
+<link rel="pingback" href="https://www.thegeekstuff.com/xmlrpc.php">
+
+<!-- All in One SEO Pack 2.2.6.2 by Michael Torbert of Semper Fi Web Design[296,359] -->
+<meta name="description" content="Q: How do I encrypt my bash shell script on Linux environment? The shell script contains password, and I don't want others who have execute access to view the">
+
+<link rel="canonical" href="https://www.thegeekstuff.com/2012/05/encrypt-bash-shell-script/">
+<!-- /all in one seo pack -->
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="The Geek Stuff » How to Encrypt Your Bash Shell Script on Linux Using SHC Comments Feed" href="https://www.thegeekstuff.com/2012/05/encrypt-bash-shell-script/feed/">
+<link rel="https://api.w.org/" href="https://www.thegeekstuff.com/wp-json/">
+<link rel="alternate" type="application/json+oembed" href="https://www.thegeekstuff.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.thegeekstuff.com%2F2012%2F05%2Fencrypt-bash-shell-script%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://www.thegeekstuff.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.thegeekstuff.com%2F2012%2F05%2Fencrypt-bash-shell-script%2F&amp;format=xml">
+<link rel="shortcut icon" href="https://static.thegeekstuff.com/wp-content/uploads/2015/05/favicon.ico.gzip">
+<link rel="preload" href="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/integrator.js"><script src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/cbgapi.loaded_1" async=""></script><script src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/cbgapi.loaded_0" async=""></script><script src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/ca-pub-8090601437064582.js"></script><script type="text/javascript" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/integrator.js"></script><link rel="preload" href="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/integrator_002.js"><script type="text/javascript" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/integrator_002.js"></script><script type="text/javascript" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/a_002"></script><script type="text/javascript" charset="utf-8" async="" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/button.js"></script><script type="text/javascript" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/inputtools.js"></script></head>
+<body class="template-single">
+<script type="text/javascript" async="" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/ga.js"></script><script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-5302569-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+<div class="container">
+	<div id="header" class="header">
+		<p id="logo"><a href="https://www.thegeekstuff.com/"><img src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/thegeekstuff.gif" alt="The Geek Stuff"></a>
+</p><div id="header_ad"><div id="header_ad1">
+<script async="" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/adsbygoogle.js"></script>
+<!-- TGS Logo Header -->
+<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-8090601437064582" data-ad-slot="4708993701" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px;background-color:transparent;"><ins id="aswift_0_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;width:728px;height:90px;" width="728" height="90" frameborder="0"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div>
+	</div>
+	<span class="menu_control">≡ Menu</span>
+<ul id="menu-tgs-menu" class="menu"><li id="menu-item-15798" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-15798"><a href="https://www.thegeekstuff.com/">Home</a></li>
+<li id="menu-item-15797" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15797"><a href="https://www.thegeekstuff.com/linux-101-hacks-ebook/">Free eBook</a></li>
+<li id="menu-item-15805" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15805"><a href="https://www.thegeekstuff.com/best-of-the-blog/">Start Here</a></li>
+<li id="menu-item-15800" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15800"><a href="https://www.thegeekstuff.com/contact/">Contact</a></li>
+<li id="menu-item-15802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15802"><a href="https://www.thegeekstuff.com/about/">About</a></li>
+</ul>
+	<div class="columns">
+		<div class="content">
+			<div id="post-10264" class="post_box grt top" itemscope="" itemtype="http://schema.org/Article">
+				<div class="headline_area">
+					<h1 class="headline" itemprop="name">How to Encrypt Your Bash Shell Script on Linux Using SHC</h1>
+					<div class="byline small">
+						<span class="post_author_intro">by</span> <span class="post_author" itemprop="author">Ramesh Natarajan</span>
+						<meta itemprop="datePublished" content="2012-05-15">
+						<meta itemprop="dateModified" content="2012-05-14">
+						<span class="post_date_intro">on</span> <span class="post_date" title="2012-05-15">May 15, 2012</span>
+					</div>
+				</div>
+				<div class="post_content" itemprop="articleBody">
+<div style="margin:7px 0px 6px 0px; padding:5px;">
+
+<div style="float:left; width=95px">
+<div style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 32px; height: 20px;" id="___plusone_0"><iframe ng-non-bindable="" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 32px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" id="I0_1522232720335" name="I0_1522232720335" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/fastbutton.html" data-gapiattached="true" title="G+" width="100%" frameborder="0"></iframe></div>
+</div>
+
+<div style="float:left; padding:2px; width:90px"><iframe src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/like_002.html" scrolling="no" style="border:none; overflow:hidden; width:450px; height:21px;" allowtransparency="true" frameborder="0"></iframe>
+</div>
+
+<div style="width=95px">
+<iframe id="twitter-widget-0" scrolling="no" allowtransparency="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" style="position: static; visibility: visible; width: 60px; height: 20px;" title="Twitter Tweet Button" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/tweet_button.html" frameborder="0"></iframe><script type="text/javascript" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/widgets.js"></script>
+</div>
+
+</div>
+<p><strong>Q</strong>: How do I encrypt my bash shell script on Linux 
+environment? The shell script contains password, and I don’t want others
+ who have execute access to view the shell script and get the password. 
+Is there a way to encrypt my shell script?<br>
+<span id="more-10264"></span><br>
+<strong>A:</strong> First, as a best practice you should not be 
+encrypting your shell script. You should really document your shell 
+script properly so that anybody who views it understands exactly what it
+ does. If it contains&nbsp;sensitive&nbsp;information like password, you
+ should figure out a different approach to write the shell script 
+without having to encrypt it.</p>
+<p>That being said, if you still insist on encrypting a shell script, 
+you can use SHC utility as explained below. Please note that encrypted 
+shell script created by shc is not readable by normal users. However 
+someone who understands how this works can extract the original shell 
+script from the encrypted binary created by shc.</p>
+<p>SHC stands for shell script compiler.</p>
+<h3>1. Download shc and install it</h3>
+<p>Download <a href="http://www.datsi.fi.upm.es/%7Efrosal/">shc</a> and install it as shown below.</p>
+<pre># wget http://www.datsi.fi.upm.es/~frosal/sources/shc-3.8.7.tgz
+# tar xvfz shc-3.8.7.tgz
+# cd shc-3.8.7
+# make</pre>
+<p>Verify that shc is installed properly.</p>
+<pre>$ ./shc -v
+shc parse(-f): No source file specified
+
+shc Usage: shc [-e date] [-m addr] [-i iopt] [-x cmnd] [-l lopt] [-rvDTCAh] -f script</pre>
+<h3>2. Create a Sample Shell Script</h3>
+<p>Create a sample bash shell script that you like to encrypt using shc for testing purpose.</p>
+<p>For testing purpose, let us create the following random.sh shell 
+script which generates random numbers. You have to specify how many 
+random numbers you like to generate.</p>
+    <center>
+      <div style="margin-left:2px; margin-top:10px; margin-bottom:10px; ">
+
+        <!-- AD BLOCK -->
+		
+<script async="" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/adsbygoogle.js"></script>
+<!-- TGS Inside Content -->
+<ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-8090601437064582" data-ad-slot="8643685131" data-adsbygoogle-status="done"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><ins id="aswift_1_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;width:300px;height:250px;" width="300" height="250" frameborder="0"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        <!-- END AD BLOCK -->
+
+	  </div>
+    </center>
+
+
+<pre>$ vi random.sh
+#!/bin/bash
+
+echo -n "How many random numbers do you want to generate? "
+read max
+
+for (( start = 1; start &lt;= $max; start++ ))
+do
+  echo -e $RANDOM
+done
+
+$ ./random.sh
+How many random numbers do you want to generate? 3
+24682
+1678
+491
+</pre>
+<h3>3. Encrypt the Shell Script Using shc</h3>
+<p>Encrypt the random.sh shell scripting using shc as shown below.</p>
+<pre>$ ./shc -f random.sh</pre>
+<p>This will create the following two files:</p>
+<pre>$ ls -l random.sh*
+-rwxrw-r--. 1 ramesh ramesh   149 Mar 27 01:09 random.sh
+-rwx-wx--x. 1 ramesh ramesh 11752 Mar 27 01:12 random.sh.x
+-rw-rw-r--. 1 ramesh ramesh 10174 Mar 27 01:12 random.sh.x.c</pre>
+<ul>
+<li>random.sh is the original unencrypted shell script</li>
+<li>random.sh.x is the encrypted shell script in binary format</li>
+<li>random.sh.x.c is the C source code of the random.sh file. This C 
+source code is compiled to create the above encrypted random.sh.x file. 
+The whole logic behind the shc is to convert the random.sh shell script 
+to random.sh.x.c C program (and&nbsp;of course&nbsp;compile that to 
+generate the random.sh.x executable)</li>
+</ul>
+<pre>$ file random.sh
+random.sh: Bourne-Again shell script text executable
+
+$ file random.sh.x
+random.sh.x: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked (uses shared libs), for GNU/Linux 2.6.18, stripped
+
+$ file random.sh.x.c
+random.sh.x.c: ASCII C program text</pre>
+<h3>4. Execute the Encrypted Shell Script</h3>
+<p>Now, let us execute the encrypted shell script to make sure it works as expected.</p>
+<pre>$ ./random.sh.x
+How many random numbers do you want to generate? 3
+7489
+10494
+29627</pre>
+<p>Please note that the binary itself is still dependent on the shell 
+(the first line provided in the random.sh. i.e /bin/bash) to be 
+available to execute the script.</p>
+<h3>5. Specifying Expiration Date for Your Shell Script</h3>
+<p>Using shc you can also specify an expiration date. i.e After this 
+expiration date when somebody tries to execute the shell script, they'll
+ get an error message.</p>
+<p>Let us say that you don't want anybody to execute the random.sh.x after 31-Dec-2011 (I used last year date for testing purpose).</p>
+<p>Create a new encrypted shell script using "shc -e" option to specify 
+expiration date. The expiration date is specified in the dd/mm/yyyy 
+format.</p>
+<pre>$ ./shc -e 31/12/2011 -f random.sh</pre>
+<p>In this example, if someone tries to execute the random.sh.x, after 
+31-Dec-2011, they'll get a default expiration message as shown below.</p>
+<pre>$ ./random.sh.x
+./random.sh.x: has expired!
+Please contact your provider</pre>
+<p>If you like to specify your own custom expiration message, use -m option (along with -e option as shown below).</p>
+<pre>$ ./shc -e 31/12/2011 -m "Contact admin@thegeekstuff.com for new version of this script" -f random.sh
+
+$ ./random.sh.x
+./random.sh.x: has expired!
+Contact admin@thegeekstuff.com for new version of this script</pre>
+<h3>6. Create Redistributable Encrypted Shell Scripts</h3>
+<p>Apart from -e, and -m (for expiration), you can also use the following options:</p>
+<ul>
+<li>-r will relax security to create a redistributable binary that 
+executes on other systems that runs the same operating system as the one
+ on which it was compiled.</li>
+<li>-T will allow the created binary files to be&nbsp;traceable&nbsp;using programs like <a href="https://www.thegeekstuff.com/2012/03/reverse-engineering-tools/">strace, ltrace</a>, etc.</li>
+<li>-v is for verbose</li>
+</ul>
+<p>Typically you might want to use both -r and -T option to craete a 
+redistributable and tracable shell encrypted shell script as shown 
+below.</p>
+<pre>$ ./shc -v -r -T -f random.sh
+shc shll=bash
+shc [-i]=-c
+shc [-x]=exec '%s' "$@"
+shc [-l]=
+shc opts=
+shc: cc  random.sh.x.c -o random.sh.x
+shc: strip random.sh.x
+shc: chmod go-r random.sh.x
+
+$ ./random.sh.x
+How many random numbers do you want to generate? 3
+28954
+1410
+15234</pre>
+<p>Finally, it is worth repeating again: You should not be encrypting 
+your shell script in the first place. But, if you decided to encrypt 
+your shell script using shc, please remember that a smart person can 
+still generate the original shell script from the encrypted binary that 
+was created by shc.</p>
+<div style="margin:7px 0px 3px 0px; padding:5px; background:#F2F0E8">
+
+<div style="float:left; width=95px">
+<div style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 32px; height: 20px;" id="___plusone_1"><iframe ng-non-bindable="" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 32px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" id="I1_1522232720343" name="I1_1522232720343" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/fastbutton_002.html" data-gapiattached="true" title="G+" width="100%" frameborder="0"></iframe></div>
+</div>
+
+<div style="float:left; width=95px">
+<iframe id="twitter-widget-1" scrolling="no" allowtransparency="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" style="position: static; visibility: visible; width: 60px; height: 20px;" title="Twitter Tweet Button" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/tweet_button_002.html" frameborder="0"></iframe><script type="text/javascript" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/widgets.js"></script>
+</div>
+
+<div style="float:left; padding:2px; width:90px"><iframe src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/like_002.html" scrolling="no" style="border:none; overflow:hidden; width:450px; height:21px;" allowtransparency="true" frameborder="0"></iframe>
+</div>
+
+<div style="padding:1px">
+&gt;&nbsp;<a href="#commentform" rel="nofollow">Add your comment</a>
+</div>
+
+</div>
+<h3>If you enjoyed this article, you might also like..</h3>
+<table>
+<tbody><tr>
+<td valign="top">
+<ol>
+<li><a href="https://www.thegeekstuff.com/2010/12/50-unix-linux-sysadmin-tutorials/">50 Linux Sysadmin Tutorials</a></li>
+<li><a href="https://www.thegeekstuff.com/2010/11/50-linux-commands/">50 Most Frequently Used Linux Commands (With Examples)</a></li>
+<li><a href="https://www.thegeekstuff.com/2011/12/linux-performance-monitoring-tools/">Top 25 Best Linux Performance Monitoring and Debugging Tools</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/03/15-practical-linux-find-command-examples/">Mommy, I found it! – 15 Practical Linux Find Command Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/linux-101-hacks-ebook/">Linux 101 Hacks 2nd Edition eBook</a>&nbsp;<img title="Linux 101 Hacks Book" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/free-small.png" alt="Linux 101 Hacks Book"></li>
+</ol>
+</td>
+<td>
+<ul>
+<li><a href="https://www.thegeekstuff.com/2010/01/awk-introduction-tutorial-7-awk-print-examples/">Awk Introduction – 7 Awk Print Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/10/unix-sed-tutorial-advanced-sed-substitution-examples/">Advanced Sed Substitution Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/03/8-essential-vim-editor-navigation-fundamentals/">8 Essential Vim Editor Navigation Fundamentals</a></li>
+<li><a href="https://www.thegeekstuff.com/2011/06/iptables-rules-examples/">25 Most Frequently Used Linux IPTables Rules Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2008/08/turbocharge-putty-with-12-powerful-add-ons-software-for-geeks-3/">Turbocharge PuTTY with 12 Powerful Add-Ons</a></li>
+</ul>
+</td>
+</tr>
+</tbody></table>
+<br>
+<center>
+<table id="booktable">
+<tbody><tr>
+<td>
+<a rel="nofollow" href="https://www.thegeekstuff.com/bash-101-hacks-ebook/"><img title="Bash 101 Hacks Book" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/bash-132.png" alt="Bash 101 Hacks Book"></a>
+</td>
+<td>
+<a rel="nofollow" href="https://www.thegeekstuff.com/sed-awk-101-hacks-ebook/"><img title="Sed and Awk 101 Hacks Book" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/sed-and-awk-132.png" alt="Sed and Awk 101 Hacks Book"></a>
+</td>
+<td>
+<a rel="nofollow" href="https://www.thegeekstuff.com/nagios-core-ebook/"><img title="Nagios Core 3 Book" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/nagios-core-132.png" alt="Nagios Core 3 Book"></a>
+</td>
+<td>
+<a rel="nofollow" href="https://www.thegeekstuff.com/vim-101-hacks-ebook/"><img title="Vim 101 Hacks Book" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/vim-101-hacks-132.png" alt="Vim 101 Hacks Book"></a>
+</td>
+</tr>
+</tbody></table>
+</center>
+<br>
+				</div>
+			</div>
+			<div id="comments">
+				<p class="comments_intro"><span class="bracket">{</span> <span class="num_comments">37</span> comments… <a href="#commentform" rel="nofollow">add one</a> <span class="bracket">}</span></p>
+				<ul class="comment_list">
+					<li class="comment even thread-even depth-1" id="comment-234096">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Anurag Sharma</span>
+							<span class="comment_date">May 15, 2012, 5:44 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-234096"><p>very nice…its helped me a lot.thanks a ton</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-234096" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-234247">
+						<div class="comment_head">
+							<span class="avatar"><a href="http://wagoneers.com/" rel="nofollow"></a></span>
+							<span class="comment_author"><a href="http://wagoneers.com/" rel="external nofollow" class="url">john</a></span>
+							<span class="comment_date">May 15, 2012, 11:24 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-234247"><p>Ramesh,</p>
+<p>Enjoy your articles and short summaries.  </p>
+<p>This tool encodes, it does not encrypt.  It converts to binary and provides some nice features that make it<br>
+more secure.  Encryption would require a key.  I suppose you could say 
+that if you don’t have the shc tool you couldn’t decode the file, making
+ it “encrypted”, but that is a very weak cipher that could be broken 
+quite possibly with nothing more than the strings command, at least for 
+the plain text component.</p>
+<p>It’s misleading to believe that compilation provides some level of 
+security. The author of this tool uses the term encoding and encryption 
+interchangeably.  But this is not encryption, this is compiling.  While 
+that does afford some level of privacy for a password, using strings 
+you’d likely see a password and any data passed as it would be encoded 
+as plain ASCII.    I use strings on microsoft executable files and 
+attachments to look for strings of text that point to dll’s or registry 
+entries… spotted a lot of viruses that way.</p>
+<p>Have you tried using strings on the encoded file?  It would be interesting to see what is shown.  I’m not<br>
+going to download the tool to try it.</p>
+<p>So, this is a merely a compiler, converting the plain ASCII of the shell script to binary.<br>
+                NAME     shc – Generic shell script compiler</p>
+<p>A truly encrypted file would not be executable without another step 
+or a key.  It might be possible using PGP or some combination of ssh and
+ file permissions, sudo, sticky bits or any other convoluted method to 
+provide true security.  The use of expect with DBA files and FTP 
+presents the same kind of challenges.  Have come up with a number of 
+ways of masking this info. </p>
+<p>But even though the author of the tool uses the term encryption, it is not.  </p>
+<p>thanx,<br>
+john</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-234247" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-234257">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Sylvain Senechal</span>
+							<span class="comment_date">May 15, 2012, 11:53 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-234257"><p>I am always suspicious when a 3rd party tool needs root privileges to run properly.</p>
+<p>On early Ubuntu distribution (for example), to use shc without root 
+privileges you need to use the -T argument.   (Try the following to see 
+if you need the -T switch:   $ strace strace -p $$) </p>
+<p>    Since Ubuntu 10.10, PTRACE_ATTACH is not allowed against arbitrary<br>
+    matching-uid processes. The traced “child”  must  be a descendant<br>
+    of  the  tracer  or  must have called prctl(2) using PR_SET_PTRACER,<br>
+    with the pid of the tracer (or one of its ancestors).  For more<br>
+    details, see :</p>
+<p>        – mn ptrace<br>
+        – /etc/sysctl.d/10-ptrace.conf<br>
+        – <a href="https://wiki.ubuntu.com/SecurityTeam/Roadmap/KernelHardening#ptrace" rel="nofollow">https://wiki.ubuntu.com/SecurityTeam/Roadmap/KernelHardening#ptrace</a><br>
+        – <a href="http://ubuntuforums.org/archive/index.php/t-1872947.html" rel="nofollow">http://ubuntuforums.org/archive/index.php/t-1872947.html</a></p>
+<p>Also, not sure if it’s a realy safe way to encrypt scripts. (But its better than nothing)</p>
+<p>cf.:<br>
+<a href="http://www.linuxjournal.com/article/8256" rel="nofollow">http://www.linuxjournal.com/article/8256</a><br>
+<a href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=327263" rel="nofollow">http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=327263</a><br>
+<a href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=508109" rel="nofollow">http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=508109</a></p>
+<p>Thx for your post!<br>
+Regards,</p>
+<p>– Sylvain</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-234257" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-234777">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Jalal Hajigholamali</span>
+							<span class="comment_date">May 16, 2012, 11:22 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-234777"><p>Hi Ramesh</p>
+<p>Thanks a lot…</p>
+<p>i used SHC for many years and very useful utility</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-234777" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-235233">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Krishnan</span>
+							<span class="comment_date">May 17, 2012, 6:42 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-235233"><p>After 
+encrypting can i get rid of the .sh file? What if i want to make chnages
+ to the script again, can i decrypt from .sh.x or .sh.x.c? If i pass on 
+these encrypted files to some one else for execution can they decrypt 
+these files and look into the contents?</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-235233" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-235497">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Karthik.P.R</span>
+							<span class="comment_date">May 17, 2012, 8:45 pm</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-235497"><p>HI Sir,</p>
+<p>Thanks we have been using SHC for years and found it , very useful.</p>
+<p>Karthik.P.R<br>
+MySQL DBA</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-235497" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-238860">
+						<div class="comment_head">
+							<span class="avatar"><a href="http://kbcmdba.blogspot.com/" rel="nofollow"></a></span>
+							<span class="comment_author"><a href="http://kbcmdba.blogspot.com/" rel="external nofollow" class="url">KB</a></span>
+							<span class="comment_date">May 24, 2012, 10:51 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-238860"><p>Summary:</p>
+<p>SHC is a cool geeky tool, but it doesn’t address what I feel are the 
+root causes – a failure to separate code from configuration and a myopic
+ view of security.</p>
+<p>Details:</p>
+<p>Ramesh – nice article and you’re definitely pointing folks in the 
+right direction but I see a deeper issue here (you alluded to it but 
+didn’t address it head-on).</p>
+<p>As I see it, when developers (whether system administrators or not) 
+want to hard-code things (like passwords for example), they’re writing 
+code that’s hard to maintain and typically much less secure / flexible 
+over the long term.</p>
+<p>Passwords are just one of many things that programs need to access as
+ part of the programs’ configuration. Rather than storing configuration 
+details directly in a program, it’s often much more maintainable to 
+store configuration in a configuration-specific area like a config.ini 
+or similar file. This makes it a lot easier to a) find, and b) change 
+without risking breaking the executable code (whether shell script or 
+binary executable), c) should help remind the developer that the values 
+need to be checked before being used, and d) avoids re-building a system
+ each time the configuration changes. After all – we do this for 
+executable programs – why can’t we do the same for scripts?</p>
+<p>The other item to consider – when storing sensitive data in a file 
+system (or other persistence layer / store), administrators need to 
+consider how safe the store is from prying eyes. If a store is broken 
+into, it helps to know where all the passwords are stored so those 
+passwords can be changed easily. It is also a good idea to change 
+passwords from time to time even if a store hasn’t been broken into as a
+ policy. This helps protect the administrator from over-exposure in the 
+event the store is broken into but the administrator hasn’t detected it 
+yet.</p>
+<p>If the password being stored is not being used to get into something 
+but to allow access to something, most programs will store a secure hash
+ of a password or better yet, store a hash of a password 
+per-authorized-user. Often, access requirements are not just user and 
+password combinations but may also include a source IP or range of 
+addresses as well as a potential secure key that is changed out from 
+time to time as well. Bonus points if access is specific to the user’s 
+needs (like user a can SELECT, user b can SELECT, INSERT, UPDATE, 
+DELETE, and user c has administrative access).</p>
+<p>KB</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-238860" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-279487">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">eshwar</span>
+							<span class="comment_date">August 1, 2012, 5:35 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-279487"><p>hi just i
+ have encrypted with key my shell script by SHC utility nice tool . bt i
+ want to know how to decrypt the encrypted shell script.please let me 
+know anyone knows this …thanks in advance</p>
+<p>regards,<br>
+eshwar</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-279487" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-480089">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">kunwar</span>
+							<span class="comment_date">January 7, 2013, 3:02 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-480089"><p>I am getting some junk charector as a output after running the converted binary of the source shell script.</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-480089" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-712059">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Gaby</span>
+							<span class="comment_date">April 25, 2013, 1:13 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-712059"><p>Hi,</p>
+<p>Thanks a lot, this applications is very useful (on my Linux machine),
+ but I have problems to use shc in Mac OS. Not works, I compiled this 
+one and ejecute the binary file generated but only resive this error:</p>
+<p>-bash: ./myapplication.sh.x: cannot execute binary file</p>
+<p>My OS is MAC OS X Lion.</p>
+<p>Can you help me, please?</p>
+<p>Thanks!!</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-712059" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-742334">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Syafeuq</span>
+							<span class="comment_date">May 11, 2013, 3:31 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-742334"><p>After i encrypted it my script did not working. Is it shc still available to use?</p>
+<p>[root@my shc-3.8.7]# ./op.sh.x</p>
+<p>[8]+  Stopped                 ./op.sh.x</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-742334" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-944039">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Manish</span>
+							<span class="comment_date">September 22, 2013, 1:41 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-944039"><p>bash-2.04$ gcc  aaa.sh.x.c<br>
+bash-2.04$ ./a.out<br>
+HI,</p>
+<p>While i am encryted the script. Same will be given below error. In 
+first statement (db2 connect to manis) is successfull but in 2nd 
+statement (db2 “select count(1) from amnish.test” ) given below error 
+after establishing the connection successfully.</p>
+<p>  Database Connection Information</p>
+<p> Database server        = DB2/AIX64 9.5.9<br>
+ SQL authorization ID   = MANISH<br>
+ Local database alias   = MANISH</p>
+<p>SQL1024N  A database connection does not exist.  SQLSTATE=08003</p>
+<p>Please help me to resolve the issue</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-944039" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-1033192">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">whyitellu</span>
+							<span class="comment_date">November 13, 2013, 1:51 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-1033192"><p>@Syafeuq</p>
+<p>try to compile programe with shc -v -r -T -f  /op.sh</p>
+<p>it will probably solve the problem</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-1033192" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-1285758">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Sepahrad Salour</span>
+							<span class="comment_date">February 20, 2014, 8:37 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-1285758"><p>Hi,</p>
+<p>Thanks for your great article 🙂</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-1285758" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-1288946">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">naveen</span>
+							<span class="comment_date">February 21, 2014, 10:23 pm</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-1288946"><p>thanks…</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-1288946" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-1422955">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Conti</span>
+							<span class="comment_date">April 2, 2014, 11:56 pm</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-1422955"><p>warning! shc will not protect your sourcecode!</p>
+<p>After executing the “protected script” run:</p>
+<p>ps aux | grep “name of shc compiled script”</p>
+<p>You will notice it uses a single process to execute the entire 
+contents of your script and it is now displayed in it’s entirety in your
+ shell window. You can then simply find and replace ^J with \n and ^I 
+with \t and you have the full formatted source code.</p>
+<p>Therefore any shc ‘compiled script’ can be reversed to original 
+complete source code in seconds… It is utterly pointless and I really 
+wish people would stop suggesting it as an obfuscation technique, it 
+gives authors a false sense of security because at a glance the *file* 
+it compiles appears to be very secure. No obfuscation technique is 
+irreversible but the point is to at least make it complex enough that it
+ becomes more effort than it is worth to a would be code thief.</p>
+<p>shc however, can be reversed in seconds as I have just described above.</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-1422955" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-1709649">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Ziegfred</span>
+							<span class="comment_date">May 16, 2014, 3:25 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-1709649"><p>Hi, Thanks for this post. Btw, Is this also applicable in UNIX format? Thanks</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-1709649" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-1834893">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">rinkupal</span>
+							<span class="comment_date">June 5, 2014, 10:19 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-1834893"><p>when encryption done it works but after some hours it not work sometimes says expired or sometimes weird out </p>
+<p>just used sic -v -f script.sh in terminal </p>
+<p>any help</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-1834893" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-1905675">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Justin Buser</span>
+							<span class="comment_date">June 26, 2014, 6:29 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-1905675"><p>Obviously not a big deal but in step 1 the following:</p>
+<p>tar xvfz shc-3.8.7.tgz</p>
+<p>should actually be:</p>
+<p>tar -xvzf shc-3.8.7.tgz</p>
+<p>or any derivation thereof provided that the f comes last as tar looks
+ for the name of the file to extract after the f switch. Nit-picky to be
+ sure but I just thought I’d point it out.</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-1905675" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-2349597">
+						<div class="comment_head">
+							<span class="avatar"><a href="http://www.apmuthu.com/" rel="nofollow"></a></span>
+							<span class="comment_author"><a href="http://www.apmuthu.com/" rel="external nofollow" class="url">Ap.Muthu</a></span>
+							<span class="comment_date">October 1, 2014, 7:18 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-2349597"><p>wget <a href="http://www.datsi.fi.upm.es/%7Efrosal/sources/shc-3.8.9.tgz" rel="nofollow">http://www.datsi.fi.upm.es/~frosal/sources/shc-3.8.9.tgz</a><br>
+tar xzvf shc-3.8.9.tgz<br>
+ cd shc-3.8.9<br>
+tar xzvf shc-3.8.9.tgz</p>
+<p>v3.8.7 is nolonger available.<br>
+wget does not seem to work but browser download does.<br>
+Only if the -T switch is used to compile, does the executable produced run in debian squeeze (i386) in an OpenVZ container.</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-2349597" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-2452088">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Elgrande</span>
+							<span class="comment_date">October 13, 2014, 4:10 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-2452088"><p>When using with expect script i can see password of “encrypted” script<br>
+via ps -ef</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-2452088" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-3037274">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Lorenzo a</span>
+							<span class="comment_date">November 26, 2014, 6:22 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-3037274"><p>Hi.<br>
+I don’t know if this is the right place where I can ask about shc and 
+his functionalities but I have a question about this product. If this is
+ not the right place where can I ask for my problem?<br>
+The bug related to the script size limitation and _SC_ARG_MAX. I get 
+this error when I do a ‘make test’. However after a ‘make’ the program 
+is compile successfully (and the program shc  is created).  There is a 
+method to solve this bug?<br>
+Thanks in advance and sorry if this is not the right place to ask of the shc program.</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-3037274" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-3183051">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">reliable</span>
+							<span class="comment_date">December 8, 2014, 6:45 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-3183051"><p>While running ./test.sh.x i am getting below error</p>
+<p>[2]+  Stopped                 ./test.sh.x</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-3183051" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-3183214">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Walker</span>
+							<span class="comment_date">December 8, 2014, 7:04 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-3183214"><p>Two questions</p>
+<p>1. first is when I  run make, it gives me<br>
+——————<br>
+***	?Do you want to probe shc with a test script?<br>
+***	Please try…	make test<br>
+——————</p>
+<p>and when I run make test, some error occurs.  When there should be .sh file in my PATH?<br>
+——————<br>
+***	Running a compiled test script!<br>
+***	It must show files with substring “sh” in your PATH…<br>
+./match.x sh<br>
+make: *** [make_the_test] Killed: 9<br>
+——————</p>
+<p>2. another question is that<br>
+does this supports mac system?  I though unix based mac os x should be 
+working fine with shc, but after I run shc, the generated file (.x) just
+ give me kill -9 as output.<br>
+not sure what is wrong</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-3183214" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-3719979">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Vikas</span>
+							<span class="comment_date">February 2, 2015, 5:27 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-3719979"><p>Hi,<br>
+I am unable to execute converted script on CentOS 6<br>
+shc -rv -f ../script-api-add-device.sh<br>
+shc shll=sh<br>
+shc [-i]=-c<br>
+shc [-x]=exec ‘%s’ “$@”<br>
+shc [-l]=<br>
+shc opts=<br>
+shc: cc  ../script-api-add-device.sh.x.c -o ../script-api-add-device.sh.x<br>
+shc: strip ../script-api-add-device.sh.x<br>
+shc: chmod go-r ../script-api-add-device.sh.x<br>
+[root@localhost shc-3.8.9]# cd ..<br>
+[root@localhost etc]# ./script-api-add-device.sh.x</p>
+<p>[20]+  Stopped                 ./script-api-add-device.sh.x<br>
+[root@localhost etc]# uname -a<br>
+Linux localhost.localdomain 2.6.32-431.el6.x86_64 #1 SMP Fri Nov 22 03:15:09 UTC 2013 x86_64 x86_64 x86_64 GNU/Linux</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-3719979" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-3829045">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">showain</span>
+							<span class="comment_date">February 25, 2015, 1:23 pm</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-3829045"><p>i encrypted  my file but i have problem<br>
+“test.sh” its my file name //original code<br>
+test.sh.x // the encrypted shell script in binary format<br>
+test.sh.x.c</p>
+<p>how can i set encrypted  file to original code  (test.sh.x to test.sh)<br>
+please help me fast</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-3829045" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-3864272">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">dedicaid</span>
+							<span class="comment_date">March 4, 2015, 5:07 pm</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-3864272"><p>./mach.x<br>
+works fine<br>
+/bin/sh ./match.x<br>
+fails  cannot execute binary file<br>
+usually when called via screen or php<br>
+ive used this years ago  dont recall this being a problem is it new?</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-3864272" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-3891869">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">test</span>
+							<span class="comment_date">March 11, 2015, 2:58 pm</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-3891869"><p>[root@localhost mnt]# ./abc.sh<br>
+hi<br>
+[root@localhost mnt]# shc -f abc.sh<br>
+[root@localhost mnt]# ls<br>
+abc.sh  abc.sh.x  abc.sh.x.c  shc-3.8.9  shc-3.8.9.tgz<br>
+[root@localhost mnt]# ./abc.sh.x</p>
+<p>[1]+  Stopped                 ./abc.sh.x<br>
+[root@localhost mnt]# killall -9 abc.sh.x<br>
+[1]+  Killed                  ./abc.sh.x<br>
+[root@localhost mnt]#</p>
+<p>hi<br>
+i am getting the above error while running the encrypted scriptkindly help me</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-3891869" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-4177285">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Piyush Sharma</span>
+							<span class="comment_date">May 30, 2015, 7:46 pm</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-4177285"><p>Get an error:<br>
+[2] + stopped ./dnsfull.sh.x</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-4177285" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-4203319">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Reza</span>
+							<span class="comment_date">June 6, 2015, 11:18 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-4203319"><p>Hi this is very nice !<br>
+but i have a problem. thats is:<br>
+root@static [~]# ./tool.sh</p>
+<p>[1]+  Stopped                 ./tool.sh<br>
+root@static [~]# ./tool.sh</p>
+<p>[2]+  Stopped                 ./tool.sh<br>
+root@static [~]# ./tool.sh</p>
+<p>[3]+  Stopped                 ./tool.sh</p>
+<p>i don’t know what i do, please help me<br>
+thanks</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-4203319" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-4353402">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">NSPrabhu</span>
+							<span class="comment_date">July 24, 2015, 1:29 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-4353402"><p>Friends,</p>
+<p>I see many of you getting [x] Stopped message while executing the *.x script.<br>
+This indicates, your script was passed for a while in background, 
+similar to pressing “Ctrl+z”. This would result the same when you 
+execute script.</p>
+<p>to make it run in “foreground” again, just run the below command you 
+would see the script executes as defined and you will get the desired 
+o/p,</p>
+<p># fg &lt;&gt;</p>
+<p>where &lt;&gt; is the number you see in [x] stopped message. 🙂<br>
+eg:</p>
+<p># fg 1</p>
+<p>Cheers!<br>
+NSP</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-4353402" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-4448576">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">JFK</span>
+							<span class="comment_date">September 2, 2015, 1:19 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-4448576"><p>This is for those who has encountered the + Stopped issue.</p>
+<p>When you run the actual script, no issue at all.<br>
+When you run the encrypted script, there is a [1]+ Stopped which means 
+it is passing the script to be run as a background (similar to when you 
+press [CTRL+Z].<br>
+You need to enter ‘fg’ twice in order to continue with the script.</p>
+<p>The solution that I have is that you should compile the script with the ‘-T’ parameters.</p>
+<p>Instead of compiling with # ./shc -r -f test.bash<br>
+Use this instead # ./shc -r -T -f test.bash</p>
+<p>Cheers,<br>
+JFK</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-4448576" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-4515734">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">che</span>
+							<span class="comment_date">October 2, 2015, 5:50 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-4515734"><p>i often encountered “[x]+ Stopped”.<br>
+but i found a significant difference among shc version.<br>
+3.8.9b distribued on Francisco’s web site: often<br>
+3.9.2 distributed on github: never</p>
+<p>according to “CHANGE”, 3.8.9b works as daemon.</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-4515734" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-4670686">
+						<div class="comment_head">
+							<span class="avatar"><a href="http://joshmacdonald.net/" rel="nofollow"></a></span>
+							<span class="comment_author"><a href="http://joshmacdonald.net/" rel="external nofollow" class="url">Josh</a></span>
+							<span class="comment_date">January 12, 2016, 7:44 pm</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-4670686"><p>Walker, I have the same issues as you.</p>
+<p>The encrypted file results in “Killed: 9”</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-4670686" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-4805987">
+						<div class="comment_head">
+							<span class="avatar"><a href="http://www.ferryfair.com/" rel="nofollow"></a></span>
+							<span class="comment_author"><a href="http://www.ferryfair.com/" rel="external nofollow" class="url">Gowtham</a></span>
+							<span class="comment_date">May 15, 2016, 2:44 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-4805987"><p>my bash script ‘s binary not working!<br>
+$ ./sudo-gdb.x<br>
+./sudo-gdb.x: Operation not permitted<br>
+Killed</p>
+<p>$ sudo-gdb<br>
+GNU gdb (Ubuntu 7.11-0ubuntu1) 7.11<br>
+Copyright (C) 2016 Free Software Foundation, Inc.<br>
+License GPLv3+: GNU GPL version 3 or later<br>
+This is free software: you are free to change and redistribute it.<br>
+There is NO WARRANTY, to the extent permitted by law.  Type “show copying”<br>
+and “show warranty” for details.<br>
+This GDB was configured as “x86_64-linux-gnu”.<br>
+Type “show configuration” for configuration details.<br>
+For bug reporting instructions, please see:<br>
+.<br>
+Find the GDB manual and other documentation resources online at:<br>
+.<br>
+For help, type “help”.<br>
+Type “apropos word” to search for commands related to “word”.<br>
+(gdb)</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-4805987" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-4922755">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Inadget</span>
+							<span class="comment_date">February 22, 2017, 7:31 pm</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-4922755"><p>Hello,</p>
+<p>Thx for article, it’s fine.</p>
+<p>I’ve try this :<br>
+fct.sh<br>
+#!/bin/bash<br>
+function hello() {<br>
+   echo “hello “$1<br>
+}</p>
+<p>main.sh<br>
+#!/bin/bash</p>
+<p>. ./fct.sh</p>
+<p>hello John</p>
+<p>This not work because the file fct.sh is an executable …<br>
+I’ve try with export -f hello too, but not working.</p>
+<p>Someone can help me ?</p>
+<p>Thx a lot 🙂<br>
+Regards</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-4922755" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-4958417">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Alejandro Antonio García Garay</span>
+							<span class="comment_date">May 16, 2017, 12:40 pm</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-4958417"><p>I need help. When I tray to install with make a error occurs :</p>
+<p># make<br>
+cc -Wall  shc.c -o shc<br>
+make: cc: No se encontro el programa<br>
+make: *** [shc] Error 127</p>
+<p>The message is in spanish. I don’t understan I have c install in my server.</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-4958417" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+				</ul>
+				<form id="commentform" method="post" action="https://www.thegeekstuff.com/wp-comments-post.php">
+					<a rel="nofollow" id="cancel-comment-reply-link" href="https://www.thegeekstuff.com/2012/05/encrypt-bash-shell-script/?utm_source=tuicool#respond" style="display:none;">Cancel reply</a>
+					<p class="comment_form_title">Leave a Comment</p>
+					<p id="comment_form_name">
+						<label for="author">Name</label>
+						<input id="author" class="input_text" name="author" tabindex="1" type="text">
+					</p>
+					<p id="comment_form_email">
+						<label for="email">Email</label>
+						<input id="email" class="input_text" name="email" tabindex="2" type="text">
+					</p>
+					<p id="comment_form_url">
+						<label for="url">Website</label>
+						<input id="url" class="input_text" name="url" tabindex="3" type="text">
+					</p>
+					<p id="comment_form_comment">
+						<label for="comment">Comment</label>
+						<textarea name="comment" id="comment" class="input_text" tabindex="4" rows="6"></textarea>
+					</p>
+					<p id="comment_form_submit">
+						<input id="submit" class="input_submit" name="submit" tabindex="5" value="Submit" type="submit">
+					</p>
+<p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="1c9089553e" type="hidden"></p>
+
+	<p style="clear: both;" class="subscribe-to-comments">
+	<input name="subscribe" id="subscribe" value="subscribe" style="width: auto;" type="checkbox">
+	<label for="subscribe">Notify me of followup comments via e-mail</label>
+	</p>
+
+
+<p style="display: none;"></p><input name="comment_post_ID" value="10264" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+				<input id="ak_js" name="ak_js" value="1522232720353" type="hidden"></form>
+			</div>
+			<div class="prev_next">
+				<p class="next_post">Next post: <a href="https://www.thegeekstuff.com/2012/05/ip-header-checksum/" rel="next">How to Calculate IP Header Checksum (With an Example)</a></p>
+				<p class="previous_post">Previous post: <a href="https://www.thegeekstuff.com/2012/05/docsis-introduction/" rel="prev">Intro to DOCSIS Architecture, CM CMTS Protocol for Cable Modems</a></p>
+			</div>
+		</div>
+		<div class="sidebar">
+<div class="widget widget_text" id="text-21">			<div class="textwidget"><a title="Subscribe via RSS" href="https://www.thegeekstuff.com/feed" rel="nofollow">RSS</a>&nbsp; | &nbsp;<a title="Subscribe via Email" href="https://feedburner.google.com/fb/a/mailverify?uri=TheGeekStuff&amp;loc=en_US" rel="nofollow">Email</a>&nbsp; | &nbsp;<a title="Follow us on Twitter" href="https://twitter.com/thegeekstuff" rel="nofollow">Twitter</a>&nbsp; | &nbsp;<a title="Become a fan" href="https://www.facebook.com/thegeekstuff" rel="nofollow">Facebook</a>&nbsp; | &nbsp;<a title="Follow us on Google+" href="https://plus.google.com/112493711428194838421/posts">Google+</a>
+<br><br>
+<form action="https://www.thegeekstuff.com/search" id="cse-search-box">
+  <div>
+    <input name="cx" value="005666763606120661560:zkmegbt_djm" type="hidden">
+    <input name="cof" value="FORID:10" type="hidden">
+    <input name="ie" value="UTF-8" type="hidden">
+    <input style="background: rgb(255, 255, 255) url(&quot;https://www.google.com/cse/static/images/1x/googlelogo_lightgrey_46x16dp.png&quot;) no-repeat scroll left center; text-indent: 48px;" name="q" size="30" placeholder="Custom Search" type="text">
+    <input style="border-color:#CCCCCC #999999 #999999 #CCCCCC; border-style:double; border-width:1px; overflow:visible;" name="sa" value="Search" type="submit">
+  </div>
+<input name="siteurl" value="www.thegeekstuff.com/2012/05/encrypt-bash-shell-script/?utm_source=tuicool" type="hidden"><input name="ref" value="www.google.com.eg/" type="hidden"><input name="ss" type="hidden"></form>
+<script type="text/javascript" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/jsapi"></script>
+<script type="text/javascript">google.load("elements", "1", {packages: "transliteration"});</script><script src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/a" type="text/javascript"></script><link href="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/transliteration.css" type="text/css" rel="stylesheet"><script src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/transliteration.js" type="text/javascript"></script>
+<script type="text/javascript" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/t13n"></script>
+<script type="text/javascript" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/brand"></script>
+<br></div>
+		</div><div class="widget widget_text" id="text-3">			<div class="textwidget"><script async="" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/adsbygoogle.js"></script>
+<!-- TGS Side Bar -->
+<ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-8090601437064582" data-ad-slot="9054077260" data-adsbygoogle-status="done"><ins id="aswift_2_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><ins id="aswift_2_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;width:300px;height:250px;" width="300" height="250" frameborder="0"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br></div>
+		</div><div class="widget widget_text" id="text-4"><p class="widget_title">EBOOKS</p>			<div class="textwidget"><ul>
+<li><img title="Linux 101 Hacks Book" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/free-small.png" alt="Linux 101 Hacks Book">&nbsp;<a href="https://www.thegeekstuff.com/linux-101-hacks-ebook/">Linux 101 Hacks 2nd Edition eBook</a> - Practical Examples to Build a Strong Foundation in Linux</li>
+<li><a href="https://www.thegeekstuff.com/bash-101-hacks-ebook/">Bash 101 Hacks eBook</a> - Take Control of Your Bash Command Line and Shell Scripting</li>
+<li><a href="https://www.thegeekstuff.com/sed-awk-101-hacks-ebook/">Sed and Awk 101 Hacks eBook</a> - Enhance Your UNIX / Linux Life with Sed and Awk</li>
+<li><a href="https://www.thegeekstuff.com/vim-101-hacks-ebook/">Vim 101 Hacks eBook</a> - Practical Examples for Becoming Fast and Productive in Vim Editor</li>
+<li><a href="https://www.thegeekstuff.com/nagios-core-ebook/">Nagios Core 3 eBook</a> - Monitor Everything, Be Proactive, and Sleep Well</li>
+</ul></div>
+		</div><div class="widget widget_text" id="text-22">			<div class="textwidget"><iframe src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/likebox.html" scrolling="no" style="border:none; overflow:hidden; height:258px;" allowtransparency="true" frameborder="0"></iframe></div>
+		</div><div class="widget widget_text" id="text-17"><p class="widget_title">POPULAR POSTS</p>			<div class="textwidget"><ul>
+<li><a href="https://www.thegeekstuff.com/dslr-accessories/">15 Essential Accessories for Your Nikon or Canon DSLR Camera</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/01/12-amazing-and-essential-linux-books-to-enrich-your-brain-and-library/">12 Amazing and Essential Linux Books To Enrich Your Brain and Library</a></li>
+<li><a href="https://www.thegeekstuff.com/2010/12/50-unix-linux-sysadmin-tutorials/">50 UNIX / Linux Sysadmin Tutorials</a></li>
+<li><a href="https://www.thegeekstuff.com/2010/11/50-linux-commands/">50 Most Frequently Used UNIX / Linux Commands (With Examples)</a></li>
+<li><a href="https://www.thegeekstuff.com/2010/08/gtd-getting-things-done/">How To Be Productive and Get Things Done Using GTD</a></li>
+<li><a href="https://www.thegeekstuff.com/2010/03/30-things-to-do-when-you-are-bored-and-have-a-computer/">30 Things To Do When you are Bored and have a Computer</a></li>
+<li><a href="https://www.thegeekstuff.com/2010/09/linux-file-system-structure/">Linux Directory Structure (File System Structure) Explained with Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/06/15-practical-crontab-examples/">Linux Crontab: 15 Awesome Cron Job Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/03/15-practical-unix-grep-command-examples/">Get a Grip on the Grep! – 15 Practical Grep Command Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/07/linux-ls-command-examples/">Unix LS Command: 15 Practical Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2008/08/15-examples-to-master-linux-command-line-history/">15 Examples To Master Linux Command Line History</a></li>
+<li><a href="https://www.thegeekstuff.com/2010/08/bug-tracking-system/">Top 10 Open Source Bug Tracking System</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/01/vi-and-vim-macro-tutorial-how-to-record-and-play/">Vi and Vim Macro Tutorial: How To Record and Play</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/03/15-practical-linux-find-command-examples/">Mommy, I found it! -- 15 Practical Linux Find Command Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/07/best-gmail-tips-and-tricks/">15 Awesome Gmail Tips and Tricks</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/06/expertise-in-google-search/">15 Awesome Google Search Tips and Tricks</a></li>
+<li><a href="https://www.thegeekstuff.com/2010/08/raid-levels-tutorial/">RAID 0, RAID 1, RAID 5, RAID 10 Explained with Diagrams</a></li>
+<li><a href="https://www.thegeekstuff.com/2010/01/15-practical-unix-linux-top-command-examples/">Can You Top This? 15 Practical Linux Top Command Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/09/top-5-best-network-monitoring-tools/">Top 5 Best System Monitoring Tools</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/06/top-5-best-linux-os-distributions/">Top 5 Best Linux OS Distributions</a></li>
+<li><a href="https://www.thegeekstuff.com/2008/06/how-to-monitor-remote-linux-host-using-nagios-30/">How To Monitor Remote Linux Host using Nagios 3.0</a></li>
+<li><a href="https://www.thegeekstuff.com/2010/01/awk-introduction-tutorial-7-awk-print-examples/">Awk Introduction Tutorial – 7 Awk Print Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2010/09/rsync-command-examples/">How to Backup Linux? 15 rsync Command Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/09/the-ultimate-wget-download-guide-with-15-awesome-examples/">The Ultimate Wget Download Guide With 15 Awesome Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/07/top-5-best-linux-text-editors/">Top 5 Best Linux Text Editors</a></li>
+<li><a href="https://www.thegeekstuff.com/2010/08/tcpdump-command-examples/">Packet Analyzer: 15 TCPDUMP Command Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2010/06/bash-array-tutorial/">The Ultimate Bash Array Tutorial with 15 Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2008/11/3-steps-to-perform-ssh-login-without-password-using-ssh-keygen-ssh-copy-id/">3 Steps to Perform SSH Login Without Password Using ssh-keygen &amp; ssh-copy-id</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/10/unix-sed-tutorial-advanced-sed-substitution-examples/">Unix Sed Tutorial: Advanced Sed Substitution Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2010/03/netstat-command-examples/">UNIX / Linux: 10 Netstat Command Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2008/06/the-ultimate-guide-for-creating-strong-passwords/">The Ultimate Guide for Creating Strong Passwords</a></li>
+<li><a href="https://www.thegeekstuff.com/2008/08/6-steps-to-secure-your-home-wireless-network/">6 Steps to Secure Your Home Wireless Network</a></li>
+<li><a href="https://www.thegeekstuff.com/2008/08/turbocharge-putty-with-12-powerful-add-ons-software-for-geeks-3/">Turbocharge PuTTY with 12 Powerful Add-Ons</a></li>
+</ul></div>
+		</div><div class="widget widget_text" id="text-19"><p class="widget_title">CATEGORIES</p>			<div class="textwidget"><ul>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/linux/">Linux Tutorials</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/vim-2/">Vim Editor</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/sed/">Sed Scripting</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/awk/">Awk Scripting</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/bash-2/">Bash Shell Scripting</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/nagios-2/">Nagios Monitoring</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/openssh-2/">OpenSSH</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/iptables/">IPTables Firewall</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/apache/">Apache Web Server</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/mysql/">MySQL Database</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/perl/">Perl Programming</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/google/">Google Tutorials</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/ubuntu/">Ubuntu Tutorials</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/postgresql/">PostgreSQL DB</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/hello-world/">Hello World Examples</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/c-programming/">C Programming</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/c-plus-plus/">C++ Programming</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/dell-2/">DELL Server Tutorials</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/oracle/">Oracle Database</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/vmware/">VMware Tutorials</a></li>
+</ul></div>
+		</div><div class="widget widget_text" id="text-20">			<div class="textwidget"><div style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 300px; height: 106px;" id="___person_0"><iframe ng-non-bindable="" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 300px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 106px;" tabindex="0" vspace="0" id="I2_1522232720349" name="I2_1522232720349" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/person.html" data-gapiattached="true" title="+Badge" width="100%" frameborder="0"></iframe></div></div>
+		</div>		</div>
+	</div>
+	<div class="footer">
+<div id="footer_widgets" class="columns_3">
+	<div class="one-third sidebar first">
+<div class="widget widget_text" id="text-7"><h4 class="widget_title">About The Geek Stuff</h4>			<div class="textwidget"><br>
+<img class="float" title="Ramesh Natarajan" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/ramesh-small.gif" alt="Linux 101 Hacks Book">
+My name is <strong>Ramesh Natarajan</strong>. I will be posting 
+instruction guides, how-to, troubleshooting tips and tricks on Linux, 
+database, hardware, security and web. My focus is to write articles that
+ will either teach you or help you resolve a problem. Read more about <a href="https://www.thegeekstuff.com/about/">Ramesh Natarajan</a> and the blog.</div>
+		</div>	</div>
+	<div class="one-third sidebar">
+<div class="widget widget_text" id="text-9"><h4 class="widget_title">Contact Us</h4>			<div class="textwidget"><br>
+<strong>Email Me :</strong>
+Use this <a href="https://www.thegeekstuff.com/contact" rel="nofollow">Contact Form</a>
+ to get in touch me with your comments, questions or suggestions about 
+this site. You can also simply drop me a line to say hello!.
+<br><br>
+<a title="Follow us on Google+" href="https://plus.google.com/112493711428194838421/posts">Follow us on Google+</a>
+<br><br>
+<a title="Follow us on Twitter" href="https://twitter.com/thegeekstuff" rel="nofollow">Follow us on Twitter</a>
+<br><br>
+<a href="https://www.facebook.com/thegeekstuff" rel="nofollow">Become a fan on Facebook</a>&nbsp;&nbsp;</div>
+		</div>	</div>
+	<div class="one-third sidebar last">
+<div class="widget widget_text" id="text-8"><h4 class="widget_title">Support Us</h4>			<div class="textwidget"><br>
+Support this blog by purchasing one of my ebooks.
+<br><br>
+<a rel="nofollow" href="https://www.thegeekstuff.com/bash-101-hacks-ebook/">Bash 101 Hacks eBook</a>
+<br><br>
+<a rel="nofollow" href="https://www.thegeekstuff.com/sed-awk-101-hacks-ebook/">Sed and Awk 101 Hacks eBook</a>
+<br><br>
+<a rel="nofollow" href="https://www.thegeekstuff.com/vim-101-hacks-ebook/">Vim 101 Hacks eBook</a>
+<br><br>
+<a rel="nofollow" href="https://www.thegeekstuff.com/nagios-core-ebook/">Nagios Core 3 eBook</a></div>
+		</div>	</div>
+	<div style="clear:both;"></div>
+</div>
+		<p class="attribution">Copyright © 2008–2018 Ramesh Natarajan. All rights reserved  | <a href="https://www.thegeekstuff.com/copyright">Terms of Service</a></p>
+	</div>
+</div>
+<script type="text/javascript" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/comment-reply.gzip"></script>
+<script async="async" type="text/javascript" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/form.gzip"></script>
+<script type="text/javascript">
+(function(){
+	var classes = document.getElementsByClassName('menu_control');
+	for (i = 0; i < classes.length; i++) {
+		classes[i].onclick = function() {
+			var menu = this.nextElementSibling;
+			if (/show_menu/.test(menu.className))
+				menu.className = menu.className.replace('show_menu', '').trim();
+			else
+				menu.className += ' show_menu';
+		};
+	}
+})();
+</script>
+<noscript><style type="text/css" scoped>.menu { display: block; }</style></noscript>
+<script type="text/javascript" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/plusone.js" gapi_processed="true"></script>
+
+
+
+<iframe scrolling="no" allowtransparency="true" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/widget_iframe.html" style="display: none;" frameborder="0"></iframe><iframe name="oauth2relay489324355" id="oauth2relay489324355" src="How%20to%20Encrypt%20Your%20Bash%20Shell%20Script%20on%20Linux%20Using%20SHC_files/postmessageRelay.html" style="width: 1px; height: 1px; position: absolute; top: -100px;" tabindex="-1" aria-hidden="true"></iframe><iframe id="rufous-sandbox" scrolling="no" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: medium none;" title="Twitter analytics iframe" frameborder="0"></iframe></body></html>
+<!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/
+
+Page Caching using disk: enhanced (Requested URI contains query)
+Content Delivery Network via Amazon Web Services: CloudFront: static.thegeekstuff.com
+
+ Served from: www.thegeekstuff.com @ 2018-03-28 04:25:18 by W3 Total Cache -->

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html class=" js no-touch rgba hsla textshadow opacity svg" style="" lang="en"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>Configuring Grub 2 on CentOS 7 to Dual Boot with Windows 7 – A Stack of Notes</title>
+<meta name="description" content="You installed CentOS 7, and now you can't boot into Windows. If you want to dual boot CentOS 7 with Windows 7, you need to configure the Grub files. That is, unless you're happy to be stuck in Linux Land!">
+<meta name="keywords" content="windows, linux, troubleshooting">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Configuring Grub 2 on CentOS 7 to Dual Boot with Windows 7">
+<meta name="twitter:description" content="You installed CentOS 7, and now you can't boot into Windows. If you want to dual boot CentOS 7 with Windows 7, you need to configure the Grub files. That is, unless you're happy to be stuck in Linux Land!">
+<meta name="twitter:site" content="@dareneiri">
+<meta name="twitter:creator" content="@dareneiri">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://dareneiri.github.io/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="a messy stack of notes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Configuring Grub 2 on CentOS 7 to Dual Boot with Windows 7">
+<meta property="og:description" content="You installed CentOS 7, and now you can't boot into Windows. If you want to dual boot CentOS 7 with Windows 7, you need to configure the Grub files. That is, unless you're happy to be stuck in Linux Land!">
+<meta property="og:url" content="http://dareneiri.github.io/Configuring-Grub-2-on-CentOS-7/">
+<meta property="og:site_name" content="A Stack of Notes">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="google0dd4253d38520937.html">
+
+
+
+<link rel="canonical" href="Configuring%20Grub%202%20on%20CentOS%207%20to%20Dual%20Boot%20with%20Windows%207%20%E2%80%93%20A%20Stack%20of%20Notes_files/a_003.html">
+<link href="http://dareneiri.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="A Stack of Notes Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="Configuring%20Grub%202%20on%20CentOS%207%20to%20Dual%20Boot%20with%20Windows%207%20%E2%80%93%20A%20Stack%20of%20Notes_files/main.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://dareneiri.github.io/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://dareneiri.github.io/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="Configuring%20Grub%202%20on%20CentOS%207%20to%20Dual%20Boot%20with%20Windows%207%20%E2%80%93%20A%20Stack%20of%20Notes_files/modernizr-2.js"></script>
+
+<link href="Configuring%20Grub%202%20on%20CentOS%207%20to%20Dual%20Boot%20with%20Windows%207%20%E2%80%93%20A%20Stack%20of%20Notes_files/css.css" rel="stylesheet" type="text/css">
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://dareneiri.github.io/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://dareneiri.github.io/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://dareneiri.github.io/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://dareneiri.github.io/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://dareneiri.github.io/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://dareneiri.github.io/images/apple-touch-icon-144x144-precomposed.png">
+
+<script type="text/javascript" async="" src="Configuring%20Grub%202%20on%20CentOS%207%20to%20Dual%20Boot%20with%20Windows%207%20%E2%80%93%20A%20Stack%20of%20Notes_files/embed.js"></script><script async="" type="text/javascript" src="Configuring%20Grub%202%20on%20CentOS%207%20to%20Dual%20Boot%20with%20Windows%207%20%E2%80%93%20A%20Stack%20of%20Notes_files/count.js"></script><style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style><link rel="prefetch" href="Configuring%20Grub%202%20on%20CentOS%207%20to%20Dual%20Boot%20with%20Windows%207%20%E2%80%93%20A%20Stack%20of%20Notes_files/a_data/lounge.css"><link rel="prefetch" href="Configuring%20Grub%202%20on%20CentOS%207%20to%20Dual%20Boot%20with%20Windows%207%20%E2%80%93%20A%20Stack%20of%20Notes_files/a_data/common.js"><link rel="prefetch" href="Configuring%20Grub%202%20on%20CentOS%207%20to%20Dual%20Boot%20with%20Windows%207%20%E2%80%93%20A%20Stack%20of%20Notes_files/a_data/lounge.js"><link rel="prefetch" href="Configuring%20Grub%202%20on%20CentOS%207%20to%20Dual%20Boot%20with%20Windows%207%20%E2%80%93%20A%20Stack%20of%20Notes_files/a_data/config.js"></head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://dareneiri.github.io/">A Stack of Notes</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav"><button type="button" role="button" id="menutoggle" class="navtoogle navicon-lines-button x" aria-hidden="true"><span class="navicon-lines"></span>menu</button>
+		    <ul>
+		        
+				    
+				    <li><a href="http://dareneiri.github.io/about/">About</a></li>
+				
+				    
+				    <li><a href="http://dareneiri.github.io/posts/">All Posts</a></li>
+				
+				    
+				    <li><a href="https://darenmeiri.wordpress.com/" target="_blank">Bee Research</a></li>
+				
+				    
+				    <li><a href="http://dareneiri.github.io/tags/">Tags</a></li>
+				
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+    
+
+<div itemscope="" itemtype="http://schema.org/Person">
+
+
+	<img src="Configuring%20Grub%202%20on%20CentOS%207%20to%20Dual%20Boot%20with%20Windows%207%20%E2%80%93%20A%20Stack%20of%20Notes_files/bio-photo.jpg" class="bio-photo" alt="Daren Eiri bio photo">
+
+
+  <h3 itemprop="name">Daren Eiri</h3>
+  <p>Trained in biological research, but working in IT</p>
+  <a href="mailto:dareneiri@gmail.com" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i> Email</a>
+  <a href="http://twitter.com/dareneiri" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
+  
+  
+  <a href="http://linkedin.com/in/dareneiri" class="author-social" target="_blank"><i class="fa fa-fw fa-linkedin-square"></i> LinkedIn</a>
+  <a href="http://instagram.com/dareneiri" class="author-social" target="_blank"><i class="fa fa-fw fa-instagram"></i> Instagram</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <a href="http://www.flickr.com/dareneiri" class="author-social" target="_blank"><i class="fa fa-fw fa-flickr"></i> Flickr</a>
+</div>
+
+
+
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="http://dareneiri.github.io/Configuring-Grub-2-on-CentOS-7/" rel="bookmark" title="Configuring Grub 2 on CentOS 7 to Dual Boot with Windows 7">Configuring Grub 2 on CentOS 7 to Dual Boot with Windows 7</a></h1>
+      
+              <p class="byline">Published on <time datetime="2015-02-23T00:00:00+00:00">February 23, 2015</time></p>
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <p><em>This post assumes that Windows was installed first, and then CentOS was installed second.</em></p>
+
+<p>Once you install CentOS 7 alongside your Windows OS, you may find 
+that you cannot boot into Windows. The Grub bootloader may only show 
+your Linux OS as your only options to boot from.
+    </p><figure>
+        <img src="Configuring%20Grub%202%20on%20CentOS%207%20to%20Dual%20Boot%20with%20Windows%207%20%E2%80%93%20A%20Stack%20of%20Notes_files/centos7_grub2.png" alt="centos7 with grub2">
+    </figure><p></p>
+
+<p>To fix this and have the Grub bootloader list your Windows OS, you 
+need to edit the Grub bootloader files. If you have used CentOS is the 
+past (with 6 or earlier), you may find that editing Grub is different. 
+Previously, you would edit <code class="highlighter-rouge">/boot/grub/grub.conf</code>.
+ This is no longer the case, as the grub2.cfg file is generated 
+dynamically, based on dependency files. Here’s what you need to edit to 
+configure your bootloader.</p>
+
+<ol>
+  <li>Boot into CentOS 7, if you haven’t already.</li>
+  <li>Determine what partition your Windows OS resides on by running <code class="highlighter-rouge">sudo fdisk -l</code> in Terminal. Here’s my output:
+    <pre> Disk /dev/sda: 320.1 GB, 320072933376 bytes, 625142448 sectors
+ Units = sectors of 1 * 512 = 512 bytes
+ Sector size (logical/physical): 512 bytes / 512 bytes
+ I/O size (minimum/optimal): 512 bytes / 512 bytes
+ Disk label type: dos
+ Disk identifier: 0xcd8b1219
+
+    Device Boot      Start         End      Blocks   Id  System
+ /dev/sda1   *        2048     4194303     2096128    7  HPFS/NTFS/exFAT
+ /dev/sda2         4194304   360402758   178104227+   7  HPFS/NTFS/exFAT
+ /dev/sda3       360402942   625141759   132369409    5  Extended
+ /dev/sda5       612595712   625141759     6273024   82  Linux swap / Solaris
+ /dev/sda6       360407040   361431039      512000   83  Linux
+ /dev/sda7       361433088   612589567   125578240   8e  Linux LVM
+ </pre>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     + In this example, /dev/sda1 is the recovery partition, and /dev/sda2 is the Windows OS partition. Since partition indexes start at zero, the Windows OS partition will be `hd0,1` (a = 0, 2 = 1; or first disk, second partition) when we edit the Grub file. Make note of this.
+</code></pre></div>    </div>
+  </li>
+  <li>Open a terminal and navigate to <code class="highlighter-rouge">/etc/grub.d/</code>:
+    <pre> cd  /etc/grub.d/
+ </pre>
+  </li>
+  <li>Edit the <code class="highlighter-rouge">40_custom</code> file. You may not see the file if you <code class="highlighter-rouge">ls</code> in /grub.d/. That’s okay.
+    <pre>   sudo nano 40_custom
+ </pre>
+  </li>
+  <li>You should see the following in the nano text editor:
+    <pre> #!/bin/sh
+ exec tail -n +3 $0
+ # This file provides an easy way to add custom menu entries.  Simply type the
+ # menu entries you want to add after this comment.  Be careful not to change
+ # the 'exec tail' line above.
+ </pre>
+  </li>
+  <li>Below the last #, type on a new line:
+    <pre> menuentry "Windows 7" {
+         set root=(hd0,1)
+         chainloader +1
+         }
+ </pre>
+  </li>
+  <li>Finally, run the following to apply the changes to the grub.cfg file:
+    <pre> grub2-mkconfig --output=/boot/grub2/grub.cfg
+ </pre>
+    <ul>
+      <li>Once you reboot, you should see the option of booting into 
+Windows 7. If a default boot entry into Windows (or something else) is 
+requested, then you need to edit the <code class="highlighter-rouge">GRUB_DEFAULT</code> in <code class="highlighter-rouge">/etc/default/grub:</code></li>
+    </ul>
+    <pre>   GRUB_DEFAULT="Windows 7"
+   </pre>
+  </li>
+</ol>
+
+      <hr>
+      <footer role="contentinfo">
+        <div class="social-share">
+  <h4>Share on</h4>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://dareneiri.github.io/Configuring-Grub-2-on-CentOS-7/" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://dareneiri.github.io/Configuring-Grub-2-on-CentOS-7/" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://dareneiri.github.io/Configuring-Grub-2-on-CentOS-7/" class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+  </ul>
+</div><!-- /.social-share -->
+        <p class="byline"><strong>Configuring Grub 2 on CentOS 7 to Dual Boot with Windows 7</strong> was published on <time datetime="2015-02-23T00:00:00+00:00">February 23, 2015</time>.</p>
+      </footer>
+    </div><!-- /.article-wrap -->
+  
+    <section id="disqus_thread"><iframe id="dsq-app2090" name="dsq-app2090" allowtransparency="true" scrolling="no" tabindex="0" title="Disqus" style="width: 1px !important; min-width: 100% !important; border: medium none !important; overflow: hidden !important; height: 2607px !important;" src="Configuring%20Grub%202%20on%20CentOS%207%20to%20Dual%20Boot%20with%20Windows%207%20%E2%80%93%20A%20Stack%20of%20Notes_files/a.html" horizontalscrolling="no" verticalscrolling="no" width="100%" frameborder="0"></iframe><iframe id="indicator-north" name="indicator-north" allowtransparency="true" scrolling="no" tabindex="0" title="Disqus" style="width: 715px !important; border: medium none !important; overflow: hidden !important; top: 0px !important; min-width: 715px !important; max-width: 715px !important; position: fixed !important; z-index: 2147483646 !important; height: 22px !important; min-height: 22px !important; max-height: 22px !important; display: none !important;" frameborder="0"></iframe><iframe id="indicator-south" name="indicator-south" allowtransparency="true" scrolling="no" tabindex="0" title="Disqus" style="width: 715px !important; border: medium none !important; overflow: hidden !important; bottom: 0px !important; min-width: 715px !important; max-width: 715px !important; position: fixed !important; z-index: 2147483646 !important; height: 22px !important; min-height: 22px !important; max-height: 22px !important; display: none !important;" frameborder="0"></iframe></section><!-- /#disqus_thread -->
+  
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  <div class="related-articles">
+  <h4>You might also enjoy <small class="pull-right">(<a href="http://dareneiri.github.io/posts/">View all posts</a>)</small></h4>
+    <ul>
+    
+      <li><a href="http://dareneiri.github.io/Asus-Chromebox-With-Windows-10/" title="Asus Chromebox With Windows 10">Asus Chromebox With Windows 10</a></li>
+    
+      <li><a href="http://dareneiri.github.io/Installing-Pip-Packages-with-FIPS-Enabled-on-RHEL/" title="Installing Pip Packages With Fips Enabled On Rhel">Installing Pip Packages With Fips Enabled On Rhel</a></li>
+    
+      <li><a href="http://dareneiri.github.io/Using-MIMIC-Importer-On-Windows/" title="Using Mimic Importer On Windows">Using Mimic Importer On Windows</a></li>
+    
+    </ul>
+    <hr>
+  </div><!-- /.related-articles -->
+  <footer>
+    
+
+<span>© 2017 Daren Eiri. Powered by <a href="http://jekyllrb.com/" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a> theme.</span>
+
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="Configuring%20Grub%202%20on%20CentOS%207%20to%20Dual%20Boot%20with%20Windows%207%20%E2%80%93%20A%20Stack%20of%20Notes_files/jquery.js"></script>
+<script>window.jQuery || document.write('<script src="http://dareneiri.github.io/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="Configuring%20Grub%202%20on%20CentOS%207%20to%20Dual%20Boot%20with%20Windows%207%20%E2%80%93%20A%20Stack%20of%20Notes_files/scripts.js"></script>
+
+
+  
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'astackofnotes'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+<iframe style="display: none;"></iframe></body></html>

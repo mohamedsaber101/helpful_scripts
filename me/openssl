@@ -1,0 +1,12 @@
+
+
+#for epel repo for rhel 7.3
+## RHEL/CentOS 7 64-Bit ##
+# wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+# rpm -ivh epel-release-latest-7.noarch.rpm
+
+#openssl conflict with local openssl package in DVD ISO
+
+#yum remove openssl 
+
+yum install -y http://rpmfind.net/linux/centos/7.4.1708/os/x86_64/Packages/openssl-1.0.2k-8.el7.x86_64.rpm
