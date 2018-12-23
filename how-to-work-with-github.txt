@@ -19,3 +19,20 @@ first go to your DIR
 #git remote add < myremote | any name > git@github.com:mohamedsaber101/<Your repo there | helpful_scripts.git>
 #git remote -v --> show your configured remote repos
 #git push -u my < master| Branch Name there"Dir name" Master means / >
+
+
+################ GitHub Api ##############################
+you can create repos via cli by 
+#hub create <NEW_REPO>
+#hub remove <REPO>
+
+
+################## Cloning even older commits ##############
+
+first clone your entire repo to your local
+#git clone ........
+--> this downloaded files contains all commits
+run "#git log" to know different commits IDs
+to revert your files back to a certain commit
+#git checkout <Commit_ID>
+
