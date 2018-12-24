@@ -36,3 +36,22 @@ run "#git log" to know different commits IDs
 to revert your files back to a certain commit
 #git checkout <Commit_ID>
 
+
+
+####################### Pycharm #####################
+***** ensure github credentials
+file --> settings --> version control --> github
+
+**** ensure git client "if not, install git on your os, point to /bin/git[.exe] from pycharm
+file --> settings --> version control --> git  "ENSURE path is Found "<<c:\progarm files \ Git \ bin \git.exe>>
+
+*** Ensure Git client is working well by setting user.name, user.email
+PowerShell # git.exe config --global user.name saber
+PowerShell # git.exe config --global user.email saber@mail.com
+
+
+****  create a repo for your project
+VCS --> import into repo --> share into Github
+
+** commit changes locally "CTRL+ k"
+** push changes "CTRL+ SHIFT + K"
